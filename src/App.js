@@ -1,14 +1,10 @@
 import './App.css';
-import TheFormulario from "./components/TheFormulario";
-import Tabellero from "./components/Tabellero";
-import {useState} from "react";
+import ElLogowando from "./components/ElLogowando.jsx";
 
 function App() {
-    const [newTable, setNewTable] = useState({});
     return (
         <div className="App">
-        <TheFormulario setNewTable={setNewTable}/>
-            <Tabellero {...newTable}/>
+        <ElLogowando />
         </div>
     );
 }

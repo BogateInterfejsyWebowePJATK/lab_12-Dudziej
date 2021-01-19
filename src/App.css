@@ -1,23 +1,16 @@
 .App {
-    text-align: center;
-    max-width: 800px;
-    margin-left: 30%;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-    margin-left: 5%;
     margin-top: 40px;
+    text-align: center;
+    max-width: 400px;
+    margin-left: 39%;
+    border: solid black;
+    border-radius: 25px;
 }
 
-td, th {
-    border: 1px solid;
-    text-align: left;
-    padding: 8px;
+.err {
+  color: red;
 }
 
-tr:nth-child(even) {
-    background-color: skyblue;
+.success {
+  color: green;
 } 
