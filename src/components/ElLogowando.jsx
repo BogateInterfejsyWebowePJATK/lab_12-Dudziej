@@ -1,8 +1,7 @@
 import React from "react";
 import '../App.css'
-import goodPassword from "../data/daneLogowania.json";
 
-export default function ElLogowando() {
+export default function ElLogowando({usersData, onLogin = f => f}) {
     const [zalogowany, setZalogowany] = React.useState(false)
     const [dane, setDane] = React.useState({
         email: '',
@@ -17,11 +16,12 @@ export default function ElLogowando() {
 
     const submit = (event) => {
         event.preventDefault()
-        if(check()) {
+        let u = check()
+        if(u !== false) {
             setZalogowany(true)
+            onLogin(u)
         }
     }
-
     const check = () => {
         let errors = {}
         
@@ -43,13 +43,14 @@ export default function ElLogowando() {
         }
         
         if (Object.keys(errors).length === 0 && errors.constructor === Object) {
-            
-            if (dane["email"] === goodPassword.email && dane["haslo"] === goodPassword.haslo) {
-                return true
-            } else {
-                errors["powiadomienie"] = "Niepoprawne dane, spróbuj ponownie"
+            for(const u of usersData) {
+                if (dane["email"] === u.email && dane["haslo"] === u.haslo) {
+                    return u
+                }
             }
+            errors["powiadomienie"] = "niepoprawne dane logowanie"
         }
+
         
         setError(errors);
         return false
